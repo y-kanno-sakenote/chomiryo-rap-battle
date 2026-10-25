@@ -361,7 +361,7 @@ function corpusBattleWith(aId,bId,rounds,seed,cross,theme,half){
   }
   return {verses:out, crossOK: shared.length>0, crossMiss: miss, theme, used:[...st.used], saidHit: st.saidHit||0};
 }
-// 締めの一杯：組んだ2行組の出どころのうち、同じ組み合わせ（向きは問わない）のバトルの flavor。無ければその組み合わせの別のバトルから
+// 締めの一皿：組んだ2行組の出どころのうち、同じ組み合わせ（向きは問わない）のバトルの flavor。無ければその組み合わせの別のバトルから
 function battleFlavor(cb, aId, bId, seed){
   const same = i => { const t=CORPUS.battles[i]; return t && ((t.aId===aId&&t.bId===bId)||(t.aId===bId&&t.bId===aId)) && t.flavor; };
   let idx=[...new Set(cb.used.map(c=>c.b))].filter(same);
@@ -420,7 +420,7 @@ async function renderBattle(){
   });
   html += `<div class="drop">🎤 …mic drop.</div>`;
   const flavor = battleFlavor(cb, aId, bId, seed);
-  if(flavor) html += `<div class="cheer">🥃 今宵の一杯は「${flavor}」で乾杯</div>`;
+  if(flavor) html += `<div class="cheer">🍽 今宵の一皿は「${flavor}」でいただきます</div>`;
   showStage(html);
 }
 
